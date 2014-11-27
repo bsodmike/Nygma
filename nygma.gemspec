@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Michael de Silva"]
   spec.email         = ["hello@inertialbox.com"]
   spec.homepage      = "http://inertialbox.com"
-  spec.summary       = "Gotham's very own Mr. Nygma."
+  spec.summary       = "Gotham's very own Mr. Nygma, a Rails 4 Encryptor"
   spec.description   = spec.summary
   spec.license       = "MIT"
 
