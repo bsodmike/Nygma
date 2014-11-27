@@ -3,6 +3,9 @@ module Nygma
     pattr_initialize :key, :salt
     attr_accessor :crypt
 
+    UnknownEncryptionError = Class.new(StandardError)
+    UnknownDecryptionError = Class.new(StandardError)
+
     class << self
       def crypt!(key, salt)
         new(key, salt).call
@@ -18,10 +21,14 @@ module Nygma
 
     def encrypt(payload)
       crypt.encrypt_and_sign(payload)
+    rescue => ex
+      raise UnknownEncryptionError.new(ex)
     end
 
     def decrypt(payload)
       crypt.decrypt_and_verify(payload)
+    rescue => ex
+      raise UnknownDecryptionError.new(ex)
     end
 
   end

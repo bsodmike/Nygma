@@ -53,10 +53,10 @@ RSpec.describe Nygma::Encryptor do
     context 'when given a static payload (encrypted with different key/salt strings) for decryption' do
       it 'should raise exception' do
         static_payload ='bEpvZ1diMG5jMjFuVENlbENyRkNvZz09LS1iV1VVaFJSRkNYbnZscHpnUUQxUlhRPT0=--4e8ba51b6f97f52d67e234c55f4302b9f6e1b290'
-        expect { subject.decrypt(static_payload) }.to raise_error(ActiveSupport::MessageVerifier::InvalidSignature)
+        expect { subject.decrypt(static_payload) }.to raise_error(Nygma::Encryptor::UnknownDecryptionError)
 
         static_payload = 'Z3pHdlJXRTVUSUJXR3U4a0poM3VkZz09LS1FKzJ5RG94MGozZ1FxaExtNkd1WDBBPT0=--4fb32a5e068bec4d35fe4ba3dd36377704f3371e'
-        expect { subject.decrypt(static_payload) }.to raise_error(ActiveSupport::MessageVerifier::InvalidSignature)
+        expect { subject.decrypt(static_payload) }.to raise_error(Nygma::Encryptor::UnknownDecryptionError)
       end
     end
 
