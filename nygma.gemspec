@@ -1,22 +1,20 @@
 $:.push File.expand_path("../lib", __FILE__)
-
-# Maintain your gem's version:
 require "nygma/version"
 
 # Describe your gem and declare its dependencies:
-Gem::Specification.new do |s|
-  s.name        = "nygma"
-  s.version     = Nygma::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Nygma."
-  s.description = "TODO: Description of Nygma."
-  s.license     = "MIT"
+Gem::Specification.new do |spec|
+  spec.name        = "nygma"
+  spec.version     = Nygma::VERSION
+  spec.authors       = ["Michael de Silva"]
+  spec.email         = ["hello@inertialbox.com"]
+  spec.homepage      = "http://inertialbox.com"
+  spec.summary       = "Gotham's very own Mr. Nygma."
+  spec.description   = spec.summary
+  spec.license       = "MIT"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
+  spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  s.add_dependency "rails", "~> 4.1.8"
-
-  s.add_development_dependency "sqlite3"
+  spec.required_ruby_version = '>= 2.1.5'
+  spec.add_dependency 'rails', '~> 4.1.8'
+  spec.add_dependency 'attr_extras'
 end
