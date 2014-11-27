@@ -1,0 +1,10 @@
+language: ruby
+script: "bundle exec rspec"
+before_install:
+  - gem install bundler -v '>= 1.3'
+rvm:
+  - 2.1.5
+gemfile:
+  - Gemfile
+notifications:
+  email: false
