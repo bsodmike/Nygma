@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'Nygma'
 
 RSpec.describe Nygma::Configuration do
 
