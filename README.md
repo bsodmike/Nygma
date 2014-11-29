@@ -6,9 +6,8 @@ Gotham's very own Mr. Nygma, a Rails 4 Encryptor
 
 ## Compatibility
 
-* Supports multiple Ruby versions: Ruby 2.0.0, 2.1.0, 2.1.5 and above (see
-Travis build status).
-* Current untested for Ruby 1.9.3 and older.
+* Supports Ruby 1.9.3 and 2.
+* Travis CI for Ruby 1.9.3, 2.0.0, 2.1.0, and 2.1.5
 
 ## Usage
 
