@@ -14,7 +14,8 @@ Gem::Specification.new do |spec|
 
   spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  spec.required_ruby_version = '>= 2.1.5'
+  spec.required_ruby_version = '>= 2.0.0'
+
   spec.add_dependency 'rails', '~> 4.1.8'
   spec.add_dependency 'attr_extras'
   spec.add_development_dependency 'sqlite3'
