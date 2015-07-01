@@ -11,7 +11,8 @@ Gotham's very own Mr. Nygma, a Rails 4.2 attribute Encryptor
 
 ## Usage
 
-Add Nygma to your Gemfile and an initialiser to your Rails app
+Add Nygma to your Gemfile and an initialiser to your Rails app, generating the
+key and salt with `SecureRandom.hex(40)` and `SecureRandom.random_bytes(64)`.
 
 ```ruby
 # config/initializers/nygma.rb
@@ -23,11 +24,11 @@ Rails.application.config.encryptor = Nygma::Encryptor.crypt!(
 ```
 
 You will now be able to specify attributes within your models that need
-to be encrypted,
+attribute level encryption,
 
 ```ruby
 class POTUSNuclearCode < ActiveRecord::Base
-  encrypt :launch_code_potus
+  encrypt :launch_code_potus, :football_token
 end
 ```
 

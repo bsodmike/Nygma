@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 class EncryptableTestModel < ActiveRecord::Base
-  encrypt :token
+  encrypt :token, :reference
 end
 
 RSpec.describe Nygma::Encryptable do
@@ -22,6 +22,7 @@ RSpec.describe Nygma::Encryptable do
   let(:subject) {
       o = EncryptableTestModel.new
       o.token = payload
+      o.reference = payload
       o
   }
 
@@ -29,7 +30,10 @@ RSpec.describe Nygma::Encryptable do
 
     it 'should override accessors to store encrypted hash and return decrypted value' do
       expect(subject.token).to eq(payload)
+      expect(subject.reference).to eq(payload)
       expect(subject[:token]).not_to eq(payload)
+      expect(subject[:reference]).not_to eq(payload)
+      expect(subject[:token]).not_to eq(subject[:reference])
     end
 
     context 'when encryption key/salt change' do

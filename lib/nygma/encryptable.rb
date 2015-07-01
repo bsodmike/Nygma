@@ -22,21 +22,23 @@ module Nygma
 
     module ClassMethods
 
-      def encrypt(attribute)
-        unless has_column?(attribute)
-          Rails.logger.tagged('Nygma::Encryptable::encrypt') {
-            Rails.logger.info "Unable to encrypt missing attribute #{attribute} in #{self.name}, check your migrations!"
-          }
-        else
-          attr = "#{attribute}"
+      def encrypt(*args)
+        args.each do |attribute|
+          unless has_column?(attribute)
+            Rails.logger.tagged('Nygma::Encryptable::encrypt') {
+              Rails.logger.info "Unable to encrypt missing attribute #{attribute} in #{self.name}, check your migrations!"
+            }
+          else
+            attr = "#{attribute}"
 
-          define_method("#{attr}") do
-            encryptor.decrypt(self[attribute]) if self[attribute]
-          end
+            define_method("#{attr}") do
+              encryptor.decrypt(self[attribute]) if self[attribute]
+            end
 
-          define_method("#{attr}=") do |val|
-            encrypted_payload = encryptor.encrypt(val)
-            self[attribute] = encrypted_payload if encrypted_payload
+            define_method("#{attr}=") do |val|
+              encrypted_payload = encryptor.encrypt(val)
+              self[attribute] = encrypted_payload if encrypted_payload
+            end
           end
         end
       end
