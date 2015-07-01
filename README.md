@@ -28,9 +28,13 @@ attribute level encryption,
 
 ```ruby
 class POTUSNuclearCode < ActiveRecord::Base
-  encrypt :launch_code_potus, :football_token
+  encrypt :launch_code, :auth_token
 end
 ```
+
+The world is now safe as the Chinese won't be able to grab US nuclear launch
+codes from Hillary's email account!  They'll be nicely encrypted and
+persisted to disk.
 
 ### How it works
 
