@@ -20,8 +20,7 @@ These are best passed to your app via env keys, as shown below.
 # config/initializers/nygma.rb
 
 Rails.application.config.encryptor = Nygma::Encryptor.crypt!(
-  <%= ENV['NYGMA_KEY'] %>,
-  <%= ENV['NYGMA_SECRET'] %>
+  ENV['NYGMA_KEY'], ENV['NYGMA_SECRET']
 )
 ```
 
