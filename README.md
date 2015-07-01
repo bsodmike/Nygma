@@ -6,8 +6,8 @@ Gotham's very own Mr. Nygma, a Rails 4.2 attribute Encryptor
 
 ## Compatibility
 
-* Supports Ruby 1.9.3 and 2.
-* Travis CI for Ruby 1.9.3, and 2.2.2
+* Requires Ruby 2
+* Travis CI for 2.0.0, 2.1.0, and 2.2.2
 
 ## Usage
 
