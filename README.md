@@ -14,12 +14,14 @@ Gotham's very own Mr. Nygma, a Rails 4.2 attribute Encryptor
 Add Nygma to your Gemfile and an initialiser to your Rails app, generating the
 key and salt with `SecureRandom.hex(40)` and `SecureRandom.random_bytes(64)`.
 
+These are best passed to your app via env keys, as shown below.
+
 ```ruby
 # config/initializers/nygma.rb
 
 Rails.application.config.encryptor = Nygma::Encryptor.crypt!(
-  'f46c1fb228aac44e55f82293a2341fb47c6f12c3721382ae7dbfe2e912941f59191efbc711f1ea5e',
-  '[d\x89\r\xF6\xEB7\x9C\n\x1F+\xCAG\xF1g\e\x9Bg\xA7-:iG\b4\x03\xED\xCE\x8F>OH\b\x80\x8F\xE3\x17j\x1D\xA6\b?3\xC4\xE4\x8D\x9Eb\xA5\xB0\xB6jS\xAD\v\xE4\xBB\xDB\xF7\xFC\xBC\x04\xFD\xE4'
+  <%= ENV['NYGMA_KEY'] %>,
+  <%= ENV['NYGMA_SECRET'] %>
 )
 ```
 
@@ -40,8 +42,8 @@ persisted to disk.
 
 ```ruby
 crypt = Nygma::Encryptor.crypt!(
-  Nygma::Configuration.secure_key,
-  Nygma::Configuration.secure_salt
+  SecureRandom.hex(40),
+  SecureRandom.random_bytes(64)
 )
 
 encrypted_data = crypt.encrypt("foo")
