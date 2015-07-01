@@ -2,14 +2,36 @@
 
 [![Build Status](https://travis-ci.org/bsodmike/Nygma.svg?branch=master)](https://travis-ci.org/bsodmike/Nygma)
 
-Gotham's very own Mr. Nygma, a Rails 4 Encryptor
+Gotham's very own Mr. Nygma, a Rails 4.2 attribute Encryptor
 
 ## Compatibility
 
 * Supports Ruby 1.9.3 and 2.
-* Travis CI for Ruby 1.9.3, 2.0.0, 2.1.0, and 2.1.5
+* Travis CI for Ruby 1.9.3, and 2.2.2
 
 ## Usage
+
+Add Nygma to your Gemfile and an initialiser to your Rails app
+
+```ruby
+# config/initializers/nygma.rb
+
+Rails.application.config.encryptor = Nygma::Encryptor.crypt!(
+  'f46c1fb228aac44e55f82293a2341fb47c6f12c3721382ae7dbfe2e912941f59191efbc711f1ea5e',
+  '[d\x89\r\xF6\xEB7\x9C\n\x1F+\xCAG\xF1g\e\x9Bg\xA7-:iG\b4\x03\xED\xCE\x8F>OH\b\x80\x8F\xE3\x17j\x1D\xA6\b?3\xC4\xE4\x8D\x9Eb\xA5\xB0\xB6jS\xAD\v\xE4\xBB\xDB\xF7\xFC\xBC\x04\xFD\xE4'
+)
+```
+
+You will now be able to specify attributes within your models that need
+to be encrypted,
+
+```ruby
+class POTUSNuclearCode < ActiveRecord::Base
+  encrypt :launch_code_potus
+end
+```
+
+### How it works
 
 ```ruby
 crypt = Nygma::Encryptor.crypt!(
